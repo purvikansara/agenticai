@@ -5,6 +5,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.agents import initialize_agent, Tool
 from tools import set_reminder, book_appointment
 from dotenv import load_dotenv
+from tools import generate_health_image
 
 load_dotenv()
 
@@ -25,6 +26,11 @@ tools = [
         name="Health Info",
         func=lambda q: llm.predict(q),
         description="Use this to answer health-related questions"
+    ),
+    Tool(
+    name="Generate Image",
+    func=generate_health_image,
+    description="Creates an image related to a health topic"
     )
 ]
 

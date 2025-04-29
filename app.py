@@ -11,4 +11,8 @@ query = st.text_input("How can I help you today?")
 if query:
     with st.spinner("Thinking..."):
         response = agent.run(query)
-    st.success(response)
+        st.success(response)
+
+        # If response is a URL to image, display it
+        if response.startswith("http") and response.endswith(".png"):
+            st.image(response, caption="Generated Image")
