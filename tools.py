@@ -35,7 +35,8 @@ def generate_health_image(prompt: str) -> str:
     response = openai.images.generate(
         model="dall-e-3",       # or "dall-e-2" if preferred
         prompt=prompt,
-        size="256x256",
+        size="1024x1024",  # ✅ Supported size
+        quality="standard",
         n=1
     )
     # Return the image URL
